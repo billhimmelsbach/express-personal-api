@@ -63,6 +63,7 @@ app.get('/api/profile',function api_profile(req, res) {
   current_city: "Oakland, California",
   github_link: "https://github.com/billhimmelsbach",
   github_profile_image: "https://avatars.githubusercontent.com/billhimmelsbach",
+  favorite_color: "#ffa500",
   favorite_books: [{title: "Papers Please", genre: "Political Simulation", platform: "PC, Mac, iPad"}, {name: "Undertale", genre: "Story-driven Adventure", platform: "PC"}, {name: "Keep Talking And No One Explodes", type: "Indie Party Game", platform: "Mac, PC"}],
   favorite_video_games: [{name: "Papers Please", genre: "Political Simulation", platform: "PC, Mac, iPad"}, {name: "Undertale", genre: "Story-driven Adventure", platform: "PC"}, {name: "Keep Talking And No One Explodes", type: "Indie Party Game", platform: "Mac, PC"}],
   });
