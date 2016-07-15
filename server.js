@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+db = require('./models');
 
 /**********
  * ROUTES *
@@ -69,6 +69,108 @@ app.get('/api/profile',function api_profile(req, res) {
   });
 });
 
+app.get('/api/trips', function (req, res) {
+  // send all trips as JSON response
+  db.Trip.find()
+  // populate fills in the author id with all the author data
+  .populate('author')
+  .exec(function(err, trips){
+    if (err) { return console.log("index error: " + err); }
+    res.json(trips);
+  });
+});
+
+// get one trip
+app.get('/api/trips/:id', function (req, res) {
+  db.Trip.findById(req.params.id)
+  .populate('author')
+  .exec( function(err, trip){
+    if (err) { return console.log("show error: " + err); }
+    res.json(trip);
+  });
+});
+
+// create new trip
+app.post('/api/trips', function (req, res) {
+  // create new trip with form data (`req.body`)
+  var newTrip = new db.Trip({
+    title: req.body.title,
+    image: req.body.image,
+    releaseDate: req.body.releaseDate,
+  });
+  // this code will only add an author to a trip if the author already exists
+   db.Trip.findOne({name: req.body.author}, function(err, author){
+     if (author === null) {
+       console.log("author not found");
+       res.status(404);
+     }
+     console.log(author);
+     newTrip.author = author;
+     // add newTrip to database
+     newTrip.save(function(err, savedTrip){
+       if (err) {
+         return console.log("create error: " + err);
+       }
+       res.json(savedTrip);
+     });
+   });
+ });
+
+
+
+//get all authors
+app.get('/api/authors', function (req, res) {
+  // send all trips as JSON response
+  db.Author.find()
+  // populate fills in the author id with all the author data
+  .exec(function(err, trips){
+    if (err) { return console.log("index error: " + err); }
+    res.json(trips);
+  });
+});
+
+
+// delete trip
+app.delete('/api/trips/:id', function (req, res) {
+  // get trip id from url params (`req.params`)
+  console.log(req.params);
+  var tripId = req.params.id;
+
+  db.Trip.findOneAndRemove({ _id: tripId },function (err, deletedEntry){
+    res.json(deletedEntry);
+  });
+});
+
+// delete author
+app.delete('/api/authors/:id', function (req, res) {
+  // get author id from url params (`req.params`)
+  console.log(req.params);
+  var authorID = req.params.id;
+
+  db.Author.findOneAndRemove({ _id: authorId },function (err, deletedAuthor){
+    res.json(deletedAuthor);
+  });
+});
+
+//I GET THE INFORMATION FROM THE USER Bill Harper = Harper LEE]]--- WHAT I WANT TO CHANGE (I WANT THE TITLE)
+//THEN I FIND THE TRIP I WANT TO CHANGE BY ID PARAMATER (THIS IS THE TRIP I WANT TO CHANGE)
+//THEN I TAKE THE INFORMATION I GOT FROM THE USER AND THEN CHANGE THE TRIP I FOUND
+
+
+//grab a trip and edit it
+app.put('/api/trips/:id/:title', function(req,res) {
+  db.Trip.findById(req.params.id, function(err, tripToBeChanged){
+    tripToBeChanged.title=req.params.title; //what we want changed
+    // add newTrip to database
+    tripToBeChanged.save(function(err, trip){
+      if (err) {
+        return console.log("create error: " + err);
+      }
+      console.log("created ", trip.title);
+      res.json(trip);
+    });
+  });
+});
 /**********
  * SERVER *
  **********/
