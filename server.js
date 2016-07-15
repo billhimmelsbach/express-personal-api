@@ -43,7 +43,6 @@ app.get('/', function homepage(req, res) {
  */
 
 app.get('/api', function api_index(req, res) {
-  // TODO: Document all your api endpoints below
   res.json({
     message: "Welcome to Bill's personal api! Here there be monsters and endpoints.",
     documentation_url: "https://github.com/billhimmelsbach/express-personal-api/blob/master/README.md",
@@ -54,11 +53,18 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/trips", description: "Show all bike trips"},
       {method: "GET", path: "/api/trips/:id", description: "Show bike trip by ID"},
       {method: "POST", path: "/api/trips", description: "Create new bike trips"},
-      
-
-
-       // CHANGE ME
     ]
+  });
+});
+//
+app.get('/api/profile',function api_profile(req, res) {
+  res.json({
+  full_name: 'William "Bill" Joseph Himmelsbach',
+  current_city: "Oakland, California",
+  github_link: "https://github.com/billhimmelsbach",
+  github_profile_image: "https://avatars.githubusercontent.com/billhimmelsbach",
+  favorite_books: [{title: "Papers Please", genre: "Political Simulation", platform: "PC, Mac, iPad"}, {name: "Undertale", genre: "Story-driven Adventure", platform: "PC"}, {name: "Keep Talking And No One Explodes", type: "Indie Party Game", platform: "Mac, PC"}],
+  favorite_video_games: [{name: "Papers Please", genre: "Political Simulation", platform: "PC, Mac, iPad"}, {name: "Undertale", genre: "Story-driven Adventure", platform: "PC"}, {name: "Keep Talking And No One Explodes", type: "Indie Party Game", platform: "Mac, PC"}],
   });
 });
 
