@@ -54,7 +54,7 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/profile", description: "Data about me"},
       {method: "GET", path: "/api/trips", description: "Show all bike trips"},
       {method: "GET", path: "/api/trips/:id", description: "Show bike trip by ID"},
-      {method: "POST", path: "/api/trips", description: "Create new bike trips"},
+      {method: "POST", path: "/api/trips", description: "Create new bike trips using data from the body"},
       {method: "DELETE", path: "/api/trips/:id", description: "Delete a bike trip by ID"},
     ]
   });
@@ -75,10 +75,7 @@ app.get('/api/profile',function api_profile(req, res) {
 
 app.get('/api/trips', function (req, res) {
   // send all trips as JSON response
-  db.Trip.find()
-  // populate fills in the author id with all the author data
-  .populate('author')
-  .exec(function(err, trips){
+  db.Trip.find({}, function(err, trips) {
     if (err) { return console.log("index error: " + err); }
     res.json(trips);
   });
@@ -86,9 +83,7 @@ app.get('/api/trips', function (req, res) {
 
 // get one trip
 app.get('/api/trips/:id', function (req, res) {
-  db.Trip.findById(req.params.id)
-  .populate('author')
-  .exec( function(err, trip){
+  db.Trip.findById(req.params.id, function(err, trip) {
     if (err) { return console.log("show error: " + err); }
     res.json(trip);
   });
@@ -123,20 +118,6 @@ app.post('/api/trips', function (req, res) {
      });
    });
  });
-
-
-
-//get all authors
-app.get('/api/authors', function (req, res) {
-  // send all trips as JSON response
-  db.Author.find()
-  // populate fills in the author id with all the author data
-  .exec(function(err, trips){
-    if (err) { return console.log("index error: " + err); }
-    res.json(trips);
-  });
-});
-
 
 // delete trip
 app.delete('/api/trips/:id', function (req, res) {
