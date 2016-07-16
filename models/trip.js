@@ -4,7 +4,10 @@ var mongoose = require('mongoose'),
 var TripSchema = new Schema({
   title: String,
   image: String,
-  releaseDate: String
+  pullQuote: String,
+  summary: String,
+  tripTime: String,
+  postTime: String,
 });
 
 var Trip = mongoose.model('Trip', TripSchema);

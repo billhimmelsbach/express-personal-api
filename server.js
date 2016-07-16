@@ -53,6 +53,7 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/trips", description: "Show all bike trips"},
       {method: "GET", path: "/api/trips/:id", description: "Show bike trip by ID"},
       {method: "POST", path: "/api/trips", description: "Create new bike trips"},
+      {method: "DELETE", path: "/api/trips/:id", description: "Delete a bike trip by ID"},
     ]
   });
 });
@@ -63,6 +64,7 @@ app.get('/api/profile',function api_profile(req, res) {
   current_city: "Oakland, California",
   github_link: "https://github.com/billhimmelsbach",
   github_profile_image: "https://avatars.githubusercontent.com/billhimmelsbach",
+  bicycle: "Surly Long Haul Disc Trucker",
   favorite_color: "#ffa500",
   favorite_books: [{title: "Papers Please", genre: "Political Simulation", platform: "PC, Mac, iPad"}, {name: "Undertale", genre: "Story-driven Adventure", platform: "PC"}, {name: "Keep Talking And No One Explodes", type: "Indie Party Game", platform: "Mac, PC"}],
   favorite_video_games: [{name: "Papers Please", genre: "Political Simulation", platform: "PC, Mac, iPad"}, {name: "Undertale", genre: "Story-driven Adventure", platform: "PC"}, {name: "Keep Talking And No One Explodes", type: "Indie Party Game", platform: "Mac, PC"}],

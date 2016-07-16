@@ -37,11 +37,17 @@
           <!-- handlebars template -->
           <script id="trips-template" type="text/x-handlebars-template">
             {{#each trips}}
-            <hr>
-            <p>
-              <b>{{title}}</b>
+              <h2>{{title}}</h2>
               <br>
               <img class= "img-rounded img-responsive center-block" src="{{image}}">
+              <br>
+              <h3>{{pullQuote}}</h3>
+              <br>
+              <p>{{summary}}</p>
+              <br>
+              <p>{{postTime}}</p>
+
+
               <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
             </p>
             {{/each}}

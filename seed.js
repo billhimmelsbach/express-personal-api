@@ -2,12 +2,17 @@
 // simply run: `node seed.js` from the root of this project folder.
 
 var db = require('./models');
-
+// var currentTime = ((getMonth()+1) + "/" + getFullYear() + " @ " + getHours() + ":" + getMinutes());
+// var currentTime= new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+var currentTime= new Date();
 var trips_list = [
   {
-  title: "On The Kindness of Old Man Mobs",
-  image: "images/oldmen.png",
-  releaseDate: "July 11, 1960"
+    title: "On The Kindness of Old Man Mobs",
+    image: "images/oldmen.png",
+    pullQuote: "Doumo arigatou. Doumo arigatou...",
+    summary: "I was greeted by two broken spokes as I pulled my bike out of the ferry's storage area in Osaka, Japan. No explanation was given, and I probably wouldn't have been able to understand it even if they had offered one. So I sat down in the parking lot, pulled out my phone, and began watching YouTube videos of bike wizards threading magical bike spokes.<br><br>I must have been quite the sight, since old men who worked at the dock began pooling around me. They offered advice I couldn't understand, but I was still so incredibly grateful. After a group of about a dozen old men had gathered, one old man came forward and threaded the spokes as if he was tying his shoes. I just kept repeating one of the only Japanese phrases I knew...<br><br>Doumo arigatou. Doumo arigatou. Doumo arigatou.",
+    tripTime: "Summer 2014",
+    postTime: currentTime,
   },
 ];
 
