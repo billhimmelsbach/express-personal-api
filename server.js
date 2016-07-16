@@ -41,6 +41,8 @@ app.get('/', function homepage(req, res) {
 /*
  * JSON API Endpoints
  */
+ //sets a variable equal to current time for postDate
+var currentTime= new Date();
 
 app.get('/api', function api_index(req, res) {
   res.json({
@@ -98,7 +100,10 @@ app.post('/api/trips', function (req, res) {
   var newTrip = new db.Trip({
     title: req.body.title,
     image: req.body.image,
-    releaseDate: req.body.releaseDate,
+    pullQuote: req.body.pullQuote,
+    summary: req.body.summary,
+    tripTime: req.body.tripTime,
+    postTime: currentTime,
   });
   // this code will only add an author to a trip if the author already exists
    db.Trip.findOne({name: req.body.author}, function(err, author){

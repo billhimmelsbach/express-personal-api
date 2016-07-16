@@ -24,13 +24,16 @@
       <div class="col-md-8 col-md-offset-2">
         <form class="form" id="newTripForm">
           <div class="form-group">
-            <label for="title">Name of Trip</label>
+            <label for="title">Name Your Trip</label>
             <input type="text" class="form-control" name="title" placeholder="My Awesome Bike Trip">
           </div>
           <div class="form-group">
-            <label for="title">Image URL</label>
-            <input type="text" class="form-control" name="image" placeholder="image URL">
+            <label for="title">A Link To A Picture of Your Trip</label>
+            <input type="url" class="form-control" name="image" placeholder="https://i.imgur.com/fEB9K1f.jpg">
           </div>
+          <div class="form-group">
+            <label for="title">Write a Brief Summary of Your Trip</label>
+            <textarea rows="5" class="form-control" name="summary" placeholder="I was greeted by two broken spokes as I pulled my bike out of the ferry's storage area in Osaka, Japan. No explanation was given, and I probably wouldn't have been able to understand it even if they had offered one. So I sat down in the parking lot, pulled out my phone, and began watching YouTube videos of bike wizards threading magical bike spokes..."></textarea>
           <button type="submit" class="btn btn-default">Create trip</button>
         </form>
         <div id='tripTarget'>
@@ -45,7 +48,7 @@
               <br>
               <p>{{summary}}</p>
               <br>
-              <p>{{postTime}}</p>
+              <p>Posted On: {{postTime}}</p>
 
 
               <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
