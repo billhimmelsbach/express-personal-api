@@ -54,8 +54,9 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/profile", description: "Data about me"},
       {method: "GET", path: "/api/trips", description: "Show all bike trips"},
       {method: "GET", path: "/api/trips/:id", description: "Show bike trip by ID"},
-      {method: "POST", path: "/api/trips", description: "Create new bike trips using data from the body"},
-      {method: "DELETE", path: "/api/trips/:id", description: "Delete a bike trip by ID"},
+      {method: "POST", path: "/api/trips", description: "Create new bike trips using parameters from the body"},
+      {method: "DELETE", path: "/api/trips/:id", description: "Destroy a bike trip by ID"},
+      {method: "PUT", path: "api/trips/:id", description: "Update a bike trip by ID"}
     ]
   });
 });
@@ -73,25 +74,28 @@ app.get('/api/profile',function api_profile(req, res) {
   });
 });
 
+// GET index of all trips
 app.get('/api/trips', function (req, res) {
-  // send all trips as JSON response
   db.Trip.find({}, function(err, trips) {
-    if (err) { return console.log("index error: " + err); }
+    if (err) {
+      res.send(404);
+    }
     res.json(trips);
   });
 });
 
-// get one trip
+//shows one trip by ID
 app.get('/api/trips/:id', function (req, res) {
   db.Trip.findById(req.params.id, function(err, trip) {
-    if (err) { return console.log("show error: " + err); }
+    if (err) {
+      res.send(404);
+    }
     res.json(trip);
   });
 });
 
-// create new trip
+// POST one new trip based on form data in body
 app.post('/api/trips', function (req, res) {
-  // create new trip with form data (`req.body`)
   var newTrip = new db.Trip({
     title: req.body.title,
     image: req.body.image,
@@ -101,62 +105,39 @@ app.post('/api/trips', function (req, res) {
     tripTime: req.body.tripTime,
     postTime: new Date(),
   });
-  // this code will only add an author to a trip if the author already exists
-   db.Trip.findOne({name: req.body.author}, function(err, author){
-     if (author === null) {
-       console.log("author not found");
-       res.status(404);
-     }
-     console.log(author);
-     newTrip.author = author;
-     // add newTrip to database
      newTrip.save(function(err, savedTrip){
        if (err) {
-         return console.log("create error: " + err);
+         res.sendStatus(404);
        }
        res.json(savedTrip);
      });
    });
- });
 
-// delete trip
+// DELETE trip based on ID parameter
 app.delete('/api/trips/:id', function (req, res) {
-  // get trip id from url params (`req.params`)
-  console.log(req.params);
   var tripId = req.params.id;
-
   db.Trip.findOneAndRemove({ _id: tripId },function (err, deletedEntry){
     res.json(deletedEntry);
   });
 });
 
-// delete author
-app.delete('/api/authors/:id', function (req, res) {
-  // get author id from url params (`req.params`)
-  console.log(req.params);
-  var authorID = req.params.id;
-
-  db.Author.findOneAndRemove({ _id: authorId },function (err, deletedAuthor){
-    res.json(deletedAuthor);
-  });
-});
-
-//I GET THE INFORMATION FROM THE USER Bill Harper = Harper LEE]]--- WHAT I WANT TO CHANGE (I WANT THE TITLE)
-//THEN I FIND THE TRIP I WANT TO CHANGE BY ID PARAMATER (THIS IS THE TRIP I WANT TO CHANGE)
-//THEN I TAKE THE INFORMATION I GOT FROM THE USER AND THEN CHANGE THE TRIP I FOUND
-
-
-//grab a trip and edit it
-app.put('/api/trips/:id/:title', function(req,res) {
+// PUT trip based on ID parameter
+app.put('/api/trips/:id/', function(req,res) {
   db.Trip.findById(req.params.id, function(err, tripToBeChanged){
-    tripToBeChanged.title=req.params.title; //what we want changed
-    // add newTrip to database
-    tripToBeChanged.save(function(err, trip){
       if (err) {
-        return console.log("create error: " + err);
+        res.sendStatus(404);
       }
-      console.log("created ", trip.title);
-      res.json(trip);
+      tripToBeChanged.title = req.body.title;
+      tripToBeChanged.image = req.body.image;
+      tripToBeChanged.location = req.body.location;
+      tripToBeChanged.pullQuote = req.body.pullQuote;
+      tripToBeChanged.summary = req.body.summary;
+      tripToBeChanged.tripTime = req.body.tripTime;
+      tripToBeChanged.save(function(err, updateTrip){
+        if (err) {
+          res.sendStatus(404);
+        }
+        res.json(updateTrip);
     });
   });
 });
