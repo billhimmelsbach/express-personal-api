@@ -100,6 +100,7 @@ app.post('/api/trips', function (req, res) {
   var newTrip = new db.Trip({
     title: req.body.title,
     image: req.body.image,
+    location: req.body.location,
     pullQuote: req.body.pullQuote,
     summary: req.body.summary,
     tripTime: req.body.tripTime,

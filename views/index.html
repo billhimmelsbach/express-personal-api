@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Bicycle Trip Application</title>
+  <title>One More Ride</title>
 
   <!-- STYLESHEETS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -34,6 +34,8 @@
           <div class="form-group">
             <label for="title">Write a Brief Summary of Your Trip</label>
             <textarea rows="5" class="form-control" name="summary" placeholder="I was greeted by two broken spokes as I pulled my bike out of the ferry's storage area in Osaka, Japan. No explanation was given, and I probably wouldn't have been able to understand it even if they had offered one. So I sat down in the parking lot, pulled out my phone, and began watching YouTube videos of bike wizards threading magical bike spokes..."></textarea>
+          </div>
+          <br>
           <button type="submit" class="btn btn-default">Create trip</button>
         </form>
         <div id='tripTarget'>
@@ -41,6 +43,7 @@
           <script id="trips-template" type="text/x-handlebars-template">
             {{#each trips}}
               <h2>{{title}}</h2>
+              <h3>{{location}}</h3>
               <br>
               <img class= "img-rounded img-responsive center-block" src="{{image}}">
               <br>
@@ -49,10 +52,8 @@
               <p>{{breaklines summary}}</p>
               <br>
               <p>Posted On: {{postTime}}</p>
-
-
+              <br>
               <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
-            </p>
             {{/each}}
           </script>
         </div>

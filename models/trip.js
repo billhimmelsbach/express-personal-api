@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 var TripSchema = new Schema({
   title: String,
+  location: String,
   image: String,
   pullQuote: String,
   summary: String,
