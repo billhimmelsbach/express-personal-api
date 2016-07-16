@@ -6,13 +6,14 @@ $(document).ready(function(){
 
     $tripsList = $('#tripTarget');
 
-    // compile handlebars template
+    // creates a helper function for handlebars that replaces \n pulled from the database with <br> tags
     Handlebars.registerHelper('breaklines', function(text) {
       text = Handlebars.Utils.escapeExpression(text);
       text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
       return new Handlebars.SafeString(text);
     });
-    
+
+    //compiles handlebars template
     var source = $('#trips-template').html();
     template = Handlebars.compile(source);
 
