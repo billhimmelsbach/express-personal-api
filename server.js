@@ -103,7 +103,7 @@ app.post('/api/trips', function (req, res) {
     pullQuote: req.body.pullQuote,
     summary: req.body.summary,
     tripTime: req.body.tripTime,
-    postTime: currentTime,
+    postTime: new Date(),
   });
   // this code will only add an author to a trip if the author already exists
    db.Trip.findOne({name: req.body.author}, function(err, author){
