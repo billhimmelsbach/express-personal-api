@@ -7,11 +7,6 @@ var TripSchema = new Schema({
   releaseDate: String
 });
 
-// author: {
-//     type: Schema.Types.ObjectId,
-//     ref:'Author'
-// },
-
 var Trip = mongoose.model('Trip', TripSchema);
 
 module.exports = Trip;

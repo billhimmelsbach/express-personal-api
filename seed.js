@@ -3,41 +3,6 @@
 
 var db = require('./models');
 
-var authors_list = [
-  {
-    name: "Harper Lee",
-    alive: false
-  },
-  {
-    name: "F Scott Fitzgerald",
-    alive: false
-  },
-  {
-    name: "Victor Hugo",
-    alive: false
-  },
-  {
-    name: "Jules Verne",
-    alive: false
-  },
-  {
-    name: "Sheryl Sandberg",
-    alive: true
-  },
-  {
-    name: "Tim Ferriss",
-    alive: true
-  },
-  {
-    name: "John Steinbeck",
-    alive: false
-  },
-  {
-    name: "William Shakespeare",
-    alive: false
-  }
-];
-
 var trips_list = [
   {
   title: "To Kill a Mockingbird",
@@ -89,57 +54,17 @@ var trips_list = [
   }
 ];
 
-db.Trip.remove({}, function(err, authors) {
-  console.log('removed all authors');
-  db.Trip.create(authors_list, function(err, authors){
-    if (err) {
-      console.log(err);
-      return;
-    }
-    console.log('recreated all trips');
-    console.log("created", trips.length, "authors");
+db.Trip.remove({}, function(err, trips){
+  if(err) {
+    console.log('Error occurred in remove', err);
+  } else {
+    console.log('removed all trips');
 
-
-    db.Trip.remove({}, function(err, trips){
-      console.log('removed all trips');
-      trips_list.forEach(function (tripData) {
-        var trip = new db.Trip({
-          title: tripData.title,
-          image: tripData.image,
-          releaseDate: tripData.releaseDate
-        });
-        db.Author.findOne({name: tripData.author}, function (err, foundAuthor) {
-          console.log('found author ' + foundAuthor.name + ' for trip ' + trip.title);
-          if (err) {
-            console.log(err);
-            return;
-          }
-          trip.author = foundAuthor;
-          trip.save(function(err, savedTrip){
-            if (err) {
-              return console.log(err);
-            }
-            console.log('saved ' + savedTrip.title + ' by ' + foundTrip.name);
-          });
-        });
-      });
+    // create new records based on the array trips_list
+    db.Trip.create(trips_list, function(err, trips){
+      if (err) { return console.log('err', err); }
+      console.log("created", trips.length, "trips");
+      process.exit();
     });
-
-  });
+  }
 });
-
-// This file allows us to seed our application with data
-// simply run: `node seed.js` from the root of this project folder.
-//
-// var db = require('./models');
-//
-// var new_campsite = {description: "Sharp rocks. Middle of nowhere."}
-//
-// db.Campsite.create(new_campsite, function(err, campsite){
-//   if (err){
-//     return console.log("Error:", err);
-//   }
-//
-//   console.log("Created new campsite", campsite._id)
-//   process.exit(); // we're all done! Exit the program.
-// })
