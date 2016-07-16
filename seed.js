@@ -6,8 +6,7 @@ var db = require('./models');
 var trips_list = [
   {
   title: "On The Kindness of Old Man Mobs",
-  author: "Harper Lee",
-  image: "https://s3-us-west-2.amazonaws.com/sandboxapi/to_kill_a_mockingbird.jpg",
+  image: "images/oldmen.png",
   releaseDate: "July 11, 1960"
   },
 ];
