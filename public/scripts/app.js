@@ -73,6 +73,7 @@ $(document).ready(function(){
     $('#newTripForm input').val('');
     allTrips.push(json);
     render();
+    $('textarea').val('');
   }
 
   function newTripError() {
