@@ -9,11 +9,14 @@
 .blue {
   border: 3px solid blue;
 }*/
+.collapse, .well {
+  background-color: black;
+}
 
 html, body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: black; /* Sanity Check! */
+  background-color: black;
   color:white;
   margin: 0;
   padding: 0;
