@@ -77,7 +77,9 @@ app.get('/api/profile',function api_profile(req, res) {
 // GET index of all trips
 app.get('/api/trips', function (req, res) {
   db.Trip.find({}, function(err, trips) {
-    if (err) { return console.log("index error: " + err); }
+    if (err) {
+      res.send(404);
+    }
     res.json(trips);
   });
 });
@@ -85,7 +87,9 @@ app.get('/api/trips', function (req, res) {
 //shows one trip by ID
 app.get('/api/trips/:id', function (req, res) {
   db.Trip.findById(req.params.id, function(err, trip) {
-    if (err) { return console.log("show error: " + err); }
+    if (err) {
+      res.send(404);
+    }
     res.json(trip);
   });
 });
@@ -103,7 +107,7 @@ app.post('/api/trips', function (req, res) {
   });
      newTrip.save(function(err, savedTrip){
        if (err) {
-         return console.log("create error: " + err);
+         res.sendStatus(404);
        }
        res.json(savedTrip);
      });
@@ -117,43 +121,24 @@ app.delete('/api/trips/:id', function (req, res) {
   });
 });
 
-//I GET THE INFORMATION FROM THE USER Bill Harper = Harper LEE]]--- WHAT I WANT TO CHANGE (I WANT THE TITLE)
-//THEN I FIND THE TRIP I WANT TO CHANGE BY ID PARAMATER (THIS IS THE TRIP I WANT TO CHANGE)
-//THEN I TAKE THE INFORMATION I GOT FROM THE USER AND THEN CHANGE THE TRIP I FOUND
-
-
-//grab a trip and edit it
-// app.put('/api/trips/:id/:title', function(req,res) {
-//   db.Trip.findById(req.params.id, function(err, tripToBeChanged){
-//     tripToBeChanged.title=req.params.title; //what we want changed
-//     // add newTrip to database
-//     tripToBeChanged.save(function(err, trip){
-//       if (err) {
-//         return console.log("create error: " + err);
-//       }
-//       console.log("created ", trip.title);
-//       res.json(trip);
-//     });
-//   });
-// });
+// PUT trip based on ID parameter
 app.put('/api/trips/:id/', function(req,res) {
   db.Trip.findById(req.params.id, function(err, tripToBeChanged){
-    if (err) {
-      return console.log("create error: " + err);
-    }
-    tripToBeChanged.title = req.body.title;
-    tripToBeChanged.image = req.body.image;
-    tripToBeChanged.location = req.body.location;
-    tripToBeChanged.pullQuote = req.body.pullQuote;
-    tripToBeChanged.summary = req.body.summary;
-    tripToBeChanged.tripTime = req.body.tripTime;
-    // tripToBeChanged.save(function(err, trip){
-      // if (err) {
-      //   return console.log("create error: " + err);
-      // }
-      // console.log("created ", trip.title);
-      // res.json(trip);
-    // });
+      if (err) {
+        res.sendStatus(404);
+      }
+      tripToBeChanged.title = req.body.title;
+      tripToBeChanged.image = req.body.image;
+      tripToBeChanged.location = req.body.location;
+      tripToBeChanged.pullQuote = req.body.pullQuote;
+      tripToBeChanged.summary = req.body.summary;
+      tripToBeChanged.tripTime = req.body.tripTime;
+      tripToBeChanged.save(function(err, updateTrip){
+        if (err) {
+          res.sendStatus(404);
+        }
+        res.json(updateTrip);
+    });
   });
 });
 /**********
