@@ -1,4 +1,6 @@
 console.log("Sanity Check: JS is working!");
+//google API test
+
 var template;
 var $tripsList;
 var allTrips = [];
