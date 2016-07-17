@@ -69,7 +69,7 @@ app.get('/api/profile',function api_profile(req, res) {
   github_profile_image: "https://avatars.githubusercontent.com/billhimmelsbach",
   bicycle: "Surly Long Haul Disc Trucker",
   favorite_color: "#ffa500",
-  favorite_books: [{title: "Papers Please", genre: "Political Simulation", platform: "PC, Mac, iPad"}, {name: "Undertale", genre: "Story-driven Adventure", platform: "PC"}, {name: "Keep Talking And No One Explodes", type: "Indie Party Game", platform: "Mac, PC"}],
+  favorite_books: [{title: "Pedagogy of the Oppressed", author: "Paulo Freire", release_year: "1968"}, {title: "Leaves of Grass", author: "Walt Whitman", release_year: "1855"}, {title: "Bitch Planet", author: "Kelly Sue DeConnick", release_date: "2016"}],
   favorite_video_games: [{name: "Papers Please", genre: "Political Simulation", platform: "PC, Mac, iPad"}, {name: "Undertale", genre: "Story-driven Adventure", platform: "PC"}, {name: "Keep Talking And No One Explodes", type: "Indie Party Game", platform: "Mac, PC"}],
   });
 });
