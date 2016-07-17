@@ -37,21 +37,29 @@ h1 {
 }
 
 .topHeader {
-  /*background-image: url("../images/topheader.png");*/
-  background: url("../images/topheader.png");
-  background-position: bottom;
+  /*background: url("../images/bicycleBarSmall.png");
+  background-position: right top;
   background-attachment: inherit;
+  background-size: 100% 100%;*/
+  /*background-size: contain;*/
+  /*background-size: cover;*/
   margin: 0;
   padding:0;
   height:30vh;
-  position:fixed;
   width:100%;
-  overflow:hidden;
-  border-bottom: 3px solid pink;
+  border-bottom: 3px solid #ff00e4s;
+}
+
+#bgImage {
+  height:100%;
+  width: 100%;
+}
+
+.topHeaderBgContainer{
+height:30vh;
 }
 
 .topHeaderTextContainer {
-  position:relative;
   display:block;
   vertical-align:middle;
   /*font-family: 'Rock Salt', cursive;*/
