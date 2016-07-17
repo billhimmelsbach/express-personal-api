@@ -9,8 +9,31 @@
 .blue {
   border: 3px solid blue;
 }*/
+/*#f7f909*/
+/*#6fff00*/
+/*#00b5fb*/
+/*#ff00e4*/
+
+
+
+/*.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #00b3db;
+    border-color: #285e8e;*/
+
 .collapse, .well {
   background-color: black;
+  border-color:#ff00e4;
+}
+
+hr {
+  border-color:#ff00e4;
+}
+
+.collapseButton {
+  background-color: #6fff00;
+  border-color: black;
+  color: black;
 }
 
 html, body {

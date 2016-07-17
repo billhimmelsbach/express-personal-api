@@ -36,9 +36,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-9 col-md-offset-2">
-        <button class="btn btn-primary collapseButton" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
-          Button with data-target
+        <br>
+        <div class=text-center>
+        <button class="btn btn-primary btn-success btn-lg collapseButton" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+          Add Your Own Ride!
         </button>
+      </div>
         <div class= "collapse" id="collapseForm">
         <div class="well">
         <form class="form" id="newTripForm">
@@ -70,7 +73,9 @@
               <h2>{{title}}</h2>
               <h3>{{location}}</h3>
               <br>
-              <img class= "img-rounded img-responsive center-block" src="{{image}}">
+              <div>
+                <img class= "img-rounded img-responsive center-block" src="{{image}}">
+              </div>
               <br>
               <h3>{{pullQuote}}</h3>
               <br>
@@ -79,6 +84,8 @@
               <p>Posted On: {{postTime}}</p>
               <br>
               <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
+              <br>
+              <hr>
             {{/each}}
           </script>
         </div>
