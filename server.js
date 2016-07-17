@@ -88,7 +88,7 @@ app.get('/api/trips', function (req, res) {
 app.get('/api/trips/:id', function (req, res) {
   db.Trip.findById(req.params.id, function(err, trip) {
     if (err) {
-      res.send(404);
+      res.sendStatus(404);
     }
     res.json(trip);
   });
@@ -117,6 +117,9 @@ app.post('/api/trips', function (req, res) {
 app.delete('/api/trips/:id', function (req, res) {
   var tripId = req.params.id;
   db.Trip.findOneAndRemove({ _id: tripId },function (err, deletedEntry){
+    if (err) {
+      res.sendStatus(404);
+    }
     res.json(deletedEntry);
   });
 });
