@@ -47,22 +47,28 @@
         <div class="well">
         <form class="form" id="newTripForm">
           <div class="form-group">
-            <label for="title">Name Your Ride</label>
-            <input type="text" class="form-control" name="title" placeholder="On The Kindness of Old Man Mobs">
+            <label for="title">name your ride!</label>
+            <input type="text" class="form-control" name="title" placeholder="On The Kindness of Old Man Mobs" required>
           </div>
           <div class="form-group">
-            <label for="location">Where Did You Ride?</label>
-            <input type="text" class="form-control" name="location" placeholder="Osaka, Japan">
+            <label for="location">where did you ride?</label>
+            <input type="text" class="form-control" name="location" placeholder="Osaka, Japan" required>
           </div>
           <div class="form-group">
-            <label for="image">A Link To A Picture of Your Ride (.png, .jpg, .gif)</label>
-            <input type="url" class="form-control" name="image" placeholder="https://i.imgur.com/fEB9K1f.jpg">
+            <label for="tripTime">when did you ride?
+            <input type="date" class="form-control" name="tripTime" required>
           </div>
-          <!-- <div class="form-group">
-            label for= -->
           <div class="form-group">
-            <label for="summary">Write a Brief Summary of Your Ride</label>
+            <label for="image">link to a picture of your ride! (.png, .jpg, .gif)</label>
+            <input type="url" class="form-control" name="image" placeholder="https://i.imgur.com/fEB9K1f.jpg" required>
+          </div>
+          <div class="form-group">
+            <label for="summary">write an awesome summary of your ride!</label required>
             <textarea rows="5" class="form-control" name="summary" placeholder="I was greeted by two broken spokes as I pulled my bike out of the ferry's storage area in Osaka, Japan. No explanation was given, and I probably wouldn't have been able to understand it even if they had offered one. So I sat down in the parking lot, pulled out my phone, and began watching YouTube videos of bike wizards threading magical bike spokes..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="pullQuote">write a super short and exciting quote from your summary! (50 character limit, 1/3 of a Tweet)
+            <input type="text" class="form-control" name="pullQuote" placeholder="Domo Arigato. Domo Arigato..." maxlength="50" required>
           </div>
           <br>
           <button type="submit" class="btn btn-success btn-md collapseButton">Create Your Ride!</button>
@@ -75,13 +81,13 @@
           <script id="trips-template" type="text/x-handlebars-template">
             {{#each trips}}
               <h2 class="tripHeadline">{{title}}</h2>
-              <h3 class="tripLocation">{{location}}</h3>
+              <h3 class="tripLocation">{{location}} - {{tripTime}}</h3>
               <br>
               <div>
                 <img class= "img-rounded img-responsive center-block" src="{{image}}">
               </div>
               <br>
-              <h3 class="pullQuote">{{pullQuote}}</h3>
+              <h3 class="pullQuote">"{{pullQuote}}"</h3>
               <br>
               <p>{{breaklines summary}}</p>
               <br>

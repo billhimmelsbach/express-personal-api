@@ -64,6 +64,10 @@ p {
   color: white;
 }
 
+.pullQuote {
+  font-style:italic;
+}
+
 .headerText {
   margin-top:0;
   color: #ff00e4;
