@@ -1,4 +1,4 @@
-//seed file for database
+//seed database with default data
 
 var db = require('./models');
 // var currentTime = ((getMonth()+1) + "/" + getFullYear() + " @ " + getHours() + ":" + getMinutes());
@@ -17,7 +17,7 @@ var trips_list = [
   {
     title: "On Spider Island",
     location: "Seoul, South Korea",
-    image: "images/spiderIsland.png",
+    image: "images/spider.png",
     pullQuote: "Crawling inches away from my head as I slept...",
     summary: "We named it Spider Island. It was a small campsite on an island just outside of a city south of Seoul. Spider Island was perfect for us, well except for the spiders. I have always been absolutely terrified of spiders, and every night they would envelop our tents in web prisons that we had to tear through every morning.\n\nWe spent three nights there as one of my friend's fought off the flu. Three nights of spiders crawling inches away from my head as I slept.\n\nI would not recommend Spider Island. 3/10",
     tripTime: "2014-07-09",
