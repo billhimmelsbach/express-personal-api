@@ -17,6 +17,7 @@ $(document).ready(function(){
     var source = $('#trips-template').html();
     template = Handlebars.compile(source);
 
+//pulls a JSON of the trip data
     $.ajax({
       method: 'GET',
       url: '/api/trips',
@@ -24,8 +25,9 @@ $(document).ready(function(){
       error: handleError
     });
 
-    $('#newTripForm').on('submit', function(e) {
-      e.preventDefault();
+//on click of the new trip button, POSTSs new trip based on forms
+    $('#newTripForm').on('submit', function(event) {
+      event.preventDefault();
       $.ajax({
         method: 'POST',
         url: '/api/trips',
@@ -35,6 +37,7 @@ $(document).ready(function(){
       });
     });
 
+//on click of the delete this trip button, DELETE trip based on ID
     $tripsList.on('click', '.deleteBtn', function() {
       $.ajax({
         method: 'DELETE',
@@ -46,16 +49,10 @@ $(document).ready(function(){
 
   });
 
-  // helper function to render all posts to view
-  // note: we empty and re-render the collection each time our post data changes
+  //function that renders data on AJAX success: removes all posts, passes allTrips to template, appends HTML
   function render () {
-    // empty existing posts from view
     $tripsList.empty();
-
-    // pass `allTrips` into the template function
     var tripsHtml = template({ trips: allTrips });
-
-    // append html to the view
     $tripsList.append(tripsHtml);
   }
 
@@ -64,9 +61,9 @@ $(document).ready(function(){
     render();
   }
 
-  function handleError(e) {
+  function handleError(event) {
     console.log('uh oh');
-    $('#tripTarget').text('Failed to load trips, is the server working?');
+    $('#tripTarget').text('Failed to load trips, is the server up?');
   }
 
   function newTripSuccess(json) {
@@ -77,23 +74,22 @@ $(document).ready(function(){
   }
 
   function newTripError() {
-
+    $('#tripTarget').text('Failed to load trips, is the server up?');
   }
 
+  // find the trip by ID, remove from allTrips array
   function deleteTripSuccess(json) {
     var trip = json;
     var tripId = trip._id;
-
-    // find the trip with the correct ID and remove it from our allTrips array
     for(var index = 0; index < allTrips.length; index++) {
       if(allTrips[index]._id === tripId) {
         allTrips.splice(index, 1);
-        break;  // we found our trip - no reason to keep searching (this is why we didn't use forEach)
+        break;
       }
     }
     render();
   }
 
   function deleteTripError() {
-
+    $('#tripTarget').text('Failed to load trips, is the server up?');
   }

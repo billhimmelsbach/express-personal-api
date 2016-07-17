@@ -1,5 +1,4 @@
-// This file allows us to seed our application with data
-// simply run: `node seed.js` from the root of this project folder.
+//seed file for database
 
 var db = require('./models');
 // var currentTime = ((getMonth()+1) + "/" + getFullYear() + " @ " + getHours() + ":" + getMinutes());
