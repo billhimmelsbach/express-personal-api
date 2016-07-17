@@ -1,14 +1,76 @@
-body {
+.red {
+  border: 3px solid red;
+}
+
+.black {
+  color:black;
+}
+
+.blue {
+  border: 3px solid blue;
+}
+
+html, body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
   background-color: black; /* Sanity Check! */
   color:white;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
   margin-top: 100px;
   text-align: center;
 }
+
+.headerText {
+  margin-top:0;
+  color: #ff00e4;
+  margin-top: 0;
+  margin-left:0;
+  padding: 0;
+  left:0;
+  font-size:7vh;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.topHeader {
+  /*background-image: url("../images/topheader.png");*/
+  background: url("../images/topheader.png");
+  background-position: bottom;
+  background-attachment: inherit;
+  margin: 0;
+  padding:0;
+  height:30vh;
+  position:fixed;
+  width:100%;
+  overflow:hidden;
+  border-bottom: 3px solid pink;
+}
+
+.topHeaderTextContainer {
+  position:relative;
+  display:block;
+  vertical-align:middle;
+  /*font-family: 'Rock Salt', cursive;*/
+  font-family: 'Permanent Marker', cursive;
+}
+
+
+
+.container {
+    top: 30vh;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    overflow-y:scroll;
+    display: inline-block;
+    vertical-align: middle;
+    color: #ff00e4;
+}
+
 
 /*textarea {
   data-role: none;

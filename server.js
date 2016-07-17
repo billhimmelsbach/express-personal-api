@@ -55,8 +55,7 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/trips", description: "Show all bike trips"},
       {method: "GET", path: "/api/trips/:id", description: "Show bike trip by ID"},
       {method: "POST", path: "/api/trips", description: "Create new bike trips using parameters from the body"},
-      {method: "DELETE", path: "/api/trips/:id", description: "Destroy a bike trip by ID"},
-      {method: "PUT", path: "api/trips/:id", description: "Update a bike trip by ID"}
+      {method: "DELETE", path: "/api/trips/:id", description: "Delete a bike trip by ID"},
     ]
   });
 });
@@ -77,9 +76,7 @@ app.get('/api/profile',function api_profile(req, res) {
 // GET index of all trips
 app.get('/api/trips', function (req, res) {
   db.Trip.find({}, function(err, trips) {
-    if (err) {
-      res.send(404);
-    }
+    if (err) { return console.log("index error: " + err); }
     res.json(trips);
   });
 });
@@ -87,9 +84,7 @@ app.get('/api/trips', function (req, res) {
 //shows one trip by ID
 app.get('/api/trips/:id', function (req, res) {
   db.Trip.findById(req.params.id, function(err, trip) {
-    if (err) {
-      res.send(404);
-    }
+    if (err) { return console.log("show error: " + err); }
     res.json(trip);
   });
 });
@@ -107,7 +102,7 @@ app.post('/api/trips', function (req, res) {
   });
      newTrip.save(function(err, savedTrip){
        if (err) {
-         res.sendStatus(404);
+         return console.log("create error: " + err);
        }
        res.json(savedTrip);
      });
@@ -121,24 +116,43 @@ app.delete('/api/trips/:id', function (req, res) {
   });
 });
 
-// PUT trip based on ID parameter
+//I GET THE INFORMATION FROM THE USER Bill Harper = Harper LEE]]--- WHAT I WANT TO CHANGE (I WANT THE TITLE)
+//THEN I FIND THE TRIP I WANT TO CHANGE BY ID PARAMATER (THIS IS THE TRIP I WANT TO CHANGE)
+//THEN I TAKE THE INFORMATION I GOT FROM THE USER AND THEN CHANGE THE TRIP I FOUND
+
+
+//grab a trip and edit it
+// app.put('/api/trips/:id/:title', function(req,res) {
+//   db.Trip.findById(req.params.id, function(err, tripToBeChanged){
+//     tripToBeChanged.title=req.params.title; //what we want changed
+//     // add newTrip to database
+//     tripToBeChanged.save(function(err, trip){
+//       if (err) {
+//         return console.log("create error: " + err);
+//       }
+//       console.log("created ", trip.title);
+//       res.json(trip);
+//     });
+//   });
+// });
 app.put('/api/trips/:id/', function(req,res) {
   db.Trip.findById(req.params.id, function(err, tripToBeChanged){
-      if (err) {
-        res.sendStatus(404);
-      }
-      tripToBeChanged.title = req.body.title;
-      tripToBeChanged.image = req.body.image;
-      tripToBeChanged.location = req.body.location;
-      tripToBeChanged.pullQuote = req.body.pullQuote;
-      tripToBeChanged.summary = req.body.summary;
-      tripToBeChanged.tripTime = req.body.tripTime;
-      tripToBeChanged.save(function(err, updateTrip){
-        if (err) {
-          res.sendStatus(404);
-        }
-        res.json(updateTrip);
-    });
+    if (err) {
+      return console.log("create error: " + err);
+    }
+    tripToBeChanged.title = req.body.title;
+    tripToBeChanged.image = req.body.image;
+    tripToBeChanged.location = req.body.location;
+    tripToBeChanged.pullQuote = req.body.pullQuote;
+    tripToBeChanged.summary = req.body.summary;
+    tripToBeChanged.tripTime = req.body.tripTime;
+    // tripToBeChanged.save(function(err, trip){
+      // if (err) {
+      //   return console.log("create error: " + err);
+      // }
+      // console.log("created ", trip.title);
+      // res.json(trip);
+    // });
   });
 });
 /**********
