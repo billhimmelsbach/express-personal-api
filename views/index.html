@@ -66,12 +66,13 @@
         </form>
       </div>
     </div>
+    <hr>
         <div id='tripTarget'>
           <!-- handlebars template -->
           <script id="trips-template" type="text/x-handlebars-template">
             {{#each trips}}
-              <h2>{{title}}</h2>
-              <h3>{{location}}</h3>
+              <h2 class="tripHeadline">{{title}}</h2>
+              <h3 class="tripLocation">{{location}}</h3>
               <br>
               <div>
                 <img class= "img-rounded img-responsive center-block" src="{{image}}">

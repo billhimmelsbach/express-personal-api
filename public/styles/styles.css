@@ -30,6 +30,9 @@ hr {
   border-color:#ff00e4;
 }
 
+.tripHeadline {
+  font-family: 'rock salt', cursive;
+}
 .collapseButton {
   background-color: #6fff00;
   border-color: black;

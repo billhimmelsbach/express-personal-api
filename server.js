@@ -54,7 +54,8 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/profile", description: "Data about me"},
       {method: "GET", path: "/api/trips", description: "Show all bike trips"},
       {method: "GET", path: "/api/trips/:id", description: "Show bike trip by ID"},
-      {method: "POST", path: "/api/trips", description: "Create new bike trips using parameters from the body"},
+      {method: "POST", path: "/api/trips", description: "Create new bike trip using parameters from the form in the body"},
+      {method: "PUT", path: "/api/trips", description: "Update bike trip using parameters from the form in the body"},
       {method: "DELETE", path: "/api/trips/:id", description: "Delete a bike trip by ID"},
     ]
   });
