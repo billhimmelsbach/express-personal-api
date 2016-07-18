@@ -92,6 +92,15 @@ function deleteRideSuccess(json) {
 			break;
 		}
 	}
+	if (mapHidden === 0) {
+		$('.floatMap').animate({
+			marginLeft: '+100%'
+		}, 350);
+		$('.submit').val('Map it!');
+		mapHidden++;
+	}
+	initMap();
+
 	render();
 }
 
