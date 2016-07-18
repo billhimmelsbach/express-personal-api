@@ -115,6 +115,8 @@ $(document).ready(function(){
 setTimeout(function() {
   $('.submit').on('click', function() {
 address=$(this).attr('id');
+$('.floatMap').css('margin-left', '0%');
+$('.floatMap').css('position', 'fixed');
 console.log(address);
     console.log("test!");
     geocodeAddress(geocoder, map);
