@@ -186,8 +186,6 @@ height:30vh;
 
 
 .container {
-    top: 30vh;
-    overflow-y:scroll;
     display: inline-block;
     vertical-align: middle;
     color: #ff00e4;
