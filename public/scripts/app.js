@@ -118,11 +118,13 @@ address=$(this).attr('id');
 if (mapHidden === 1) {
 $('.floatMap').css('margin-left', '0%');
 $('.floatMap').css('position', 'fixed');
+$('.submit').val('Hide it!');
 mapHidden--;
 }
 else {
   $('.floatMap').css('margin-left', '+100%');
   $('.floatMap').css('position', 'absolute');
+  $('.submit').val('Map it!');
   mapHidden++;
 }
 console.log(address);
