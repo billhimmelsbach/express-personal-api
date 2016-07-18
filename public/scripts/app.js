@@ -74,6 +74,8 @@ function newRideSuccess(json) {
 	allRides.push(json);
 	render();
 	$('textarea').val('');
+	$('.collapse').collapse('toggle');
+	initMap();
 }
 
 function newRideError() {
