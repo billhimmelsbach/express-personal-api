@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Rock+Salt" rel="stylesheet">
 
   <!-- VENDOR SCRIPTS -->
-  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
@@ -20,85 +21,85 @@
   <script src="scripts/app.js"></script>
 
 </head>
+
 <body>
   <!-- <div id="floating-panel">
   <input id="address" type="textbox" value="Sydney, NSW">
   <input id="submit" type="button" value="Geocode">
 </div> -->
-<div class="floatMap">
-  <div id="map"></div>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkucwHjlesE88fzV0H4Dgn-S4JeIiS9XA&callback=initMap">
-  </script>
-</div>
-<div class="row">
-  <div class="topHeader text-left pull-left col-xs-12">
-    <div class="col-xs-3 topHeaderTextContainer text-left pull-left blue">
-      <h1 class="headerText">One</h1>
-      <h1 class="headerText">More</h1>
-      <h1 class="headerText">Ride</h1>
-    </div>
-    <div class="col-xs-7 topHeaderBgContainer red">
-      <img id="bgImage" class="img-responsive" src="images/bicycleBarSmall.png">
-    </div>
-  </div>
+  <div class="floatMap">
+    <div id="map"></div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkucwHjlesE88fzV0H4Dgn-S4JeIiS9XA&callback=initMap">
+    </script>
   </div>
   <div class="row">
-    <div class = "col-xs-12">
-  <div class="container col-xs-8 col-xs-offset-2">
-      <div>
-        <br>
-        <hr>
-        <div class=text-center>
-        <button class="btn btn-primary btn-success btn-lg collapseButton" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
-          Add Your Own Ride!
-        </button>
+    <div class="topHeader text-left pull-left col-xs-12">
+      <div class="col-xs-3 topHeaderTextContainer text-left pull-left blue">
+        <h1 class="headerText">One</h1>
+        <h1 class="headerText">More</h1>
+        <h1 class="headerText">Ride</h1>
       </div>
-        <div class= "collapse" id="collapseForm">
-        <div class="well">
-        <form class="form" id="newRideForm">
-          <div class="form-group">
-            <label for="title">name your ride!</label>
-            <input type="text" class="form-control" name="title" placeholder="On The Kindness of Old Man Mobs" required>
-          </div>
-          <div class="form-group">
-            <label for="location">where did you ride?</label>
-            <input type="text" class="form-control" name="location" placeholder="Osaka, Japan" required>
-          </div>
-          <div class="form-group">
-            <label for="rideTime">when did you ride?
-            <input type="date" class="form-control" name="rideTime" required>
-          </div>
-          <div class="form-group">
-            <label for="image">link to a picture of your ride! (.png, .jpg, .gif)</label>
-            <input type="url" class="form-control" name="image" placeholder="https://i.imgur.com/fEB9K1f.jpg" required>
-          </div>
-          <div class="form-group">
-            <label for="summary">write an awesome summary of your ride!</label required>
-            <textarea rows="5" class="form-control" name="summary" placeholder="I was greeted by two broken spokes as I pulled my bike out of the ferry's storage area in Osaka, Japan. No explanation was given, and I probably wouldn't have been able to understand it even if they had offered one. So I sat down in the parking lot, pulled out my phone, and began watching YouTube videos of bike wizards threading magical bike spokes..."></textarea>
-          </div>
-          <div class="form-group">
-            <label for="pullQuote">write a super short and exciting quote from your summary! (50 character limit, 1/3 of a Tweet)
-            <input type="text" class="form-control" name="pullQuote" placeholder="Domo Arigato. Domo Arigato..." maxlength="50" required>
-          </div>
-          <br>
-          <button type="submit" class="btn btn-success btn-md collapseButton">Create Your Ride!</button>
-        </form>
+      <div class="col-xs-7 topHeaderBgContainer red">
+        <img id="bgImage" class="img-responsive" src="images/bicycleBarSmall.png">
       </div>
     </div>
-    <hr>
-        <div id='rideTarget'>
-          <!-- handlebars template -->
-          <script id="rides-template" type="text/x-handlebars-template">
-            {{#each rides}}
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="container col-xs-8 col-xs-offset-2">
+        <div>
+          <br>
+          <hr>
+          <div class=text-center>
+            <button class="btn btn-primary btn-success btn-lg collapseButton" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+              Add Your Own Ride!
+            </button>
+          </div>
+          <div class="collapse" id="collapseForm">
+            <div class="well">
+              <form class="form" id="newRideForm">
+                <div class="form-group">
+                  <label for="title">name your ride!</label>
+                  <input type="text" class="form-control" name="title" placeholder="On The Kindness of Old Man Mobs" required>
+                </div>
+                <div class="form-group">
+                  <label for="location">where did you ride?</label>
+                  <input type="text" class="form-control" name="location" placeholder="Osaka, Japan" required>
+                </div>
+                <div class="form-group">
+                  <label for="rideTime">when did you ride?
+                    <input type="date" class="form-control" name="rideTime" required>
+                </div>
+                <div class="form-group">
+                  <label for="image">link to a picture of your ride! (.png, .jpg, .gif)</label>
+                  <input type="url" class="form-control" name="image" placeholder="https://i.imgur.com/fEB9K1f.jpg" required>
+                </div>
+                <div class="form-group">
+                  <label for="summary">write an awesome summary of your ride!</label required>
+                  <textarea rows="5" class="form-control" name="summary" placeholder="I was greeted by two broken spokes as I pulled my bike out of the ferry's storage area in Osaka, Japan. No explanation was given, and I probably wouldn't have been able to understand it even if they had offered one. So I sat down in the parking lot, pulled out my phone, and began watching YouTube videos of bike wizards threading magical bike spokes..."></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="pullQuote">write a super short and exciting quote from your summary! (50 character limit, 1/3 of a Tweet)
+                    <input type="text" class="form-control" name="pullQuote" placeholder="Domo Arigato. Domo Arigato..." maxlength="50" required>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success btn-md collapseButton">Create Your Ride!</button>
+              </form>
+            </div>
+          </div>
+          <hr>
+          <div id='rideTarget'>
+            <!-- handlebars template -->
+            <script id="rides-template" type="text/x-handlebars-template">
+              {{#each rides}}
               <h2 class="rideHeadline">{{title}}</h2>
               <h3 class="rideLocation">{{location}} - {{rideTime}}</h3>
-  <input class="address" type="textbox" value="{{location}}" hidden>
-  <input id="{{location}}" class="submit mapItBtn" type="button" value="Map it!">
-  <br>
+              <input class="address" type="textbox" value="{{location}}" hidden>
+              <input id="{{location}}" class="submit mapItBtn" type="button" value="Map it!">
+              <br>
               <br>
               <div>
-                <img class= "img-rounded img-responsive center-block" src="{{image}}">
+                <img class="img-rounded img-responsive center-block" src="{{image}}">
               </div>
               <br>
               <h3 class="pullQuote">"{{pullQuote}}"</h3>
@@ -109,13 +110,13 @@
               <br>
               <button type="button" name="button" class="deleteBtn btn btn-primary btn-warning btn-md pull-right" data-id={{_id}}>Delete This Ride</button>
               <br>
-              <hr>
-            {{/each}}
-          </script>
+              <hr> {{/each}}
+            </script>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </body>
+
 </html>

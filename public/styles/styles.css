@@ -1,68 +1,5 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: black;
-}
 
-.mapItBtn{
-  background-color: black;
-  color: #ff00e4;
-  right:+10%;
-  border-width: 5px;
-  border-color:#ff00e4;
-  padding:5px;
-  margin-left:5%;
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 1.5em;
-  /*top:50%;
-  bottom:50%;*/
-  /*font-size: 2em;*/
-}
-
-.mapItBtn:hover {
-  color: #00b5fb;
-}
-
-.mapItBtn:active {
-  color: #00b5fb
-}
-
-
-#map {
-  height: 100%;
-  width: 100%;
-}
-#floating-panel {
-  /*position: absolute;
-  top: 10px;
-  left: 25%;
-  z-index: 5;*/
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-  /*text-align: center;*/
-  font-family: 'Roboto','sans-serif';
-  line-height: 30px;
-  padding-left: 10px;
-}
-
-.floatMap {
-  z-index:1000000;
-  position: fixed;
-  top:25%;
-  left:82%;
-  width:18%;
-  height:50%;
-  margin-left:+100%;
-  border-style: solid;
-  border-right: 0px;
-  border-width: 4px;
-  border-radius:3px;
-  border-color:#ff00e4;
-}
-
+/*TESTING CLASSES*/
 /*.red {
   border: 3px solid red;
 }
@@ -74,59 +11,99 @@ html, body {
 .blue {
   border: 3px solid blue;
 }*/
+
+/*Color Palette*/
 /*#f7f909*/
 /*#6fff00*/
 /*#00b5fb*/
 /*#ff00e4*/
 
-
-
-/*.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-    color: #fff;
-    background-color: #00b3db;
-    border-color: #285e8e;*/
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+.mapItBtn {
+  background-color: black;
+  color: #ff00e4;
+  right: +10%;
+  border-width: 5px;
+  border-color: #ff00e4;
+  padding: 5px;
+  margin-left: 5%;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.5em;
+}
+.mapItBtn:hover {
+  color: #00b5fb;
+}
+.mapItBtn:active {
+  color: #00b5fb
+}
+#map {
+  height: 100%;
+  width: 100%;
+}
+#floating-panel {
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  font-family: 'Roboto', 'sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+.floatMap {
+  z-index: 1000000;
+  position: fixed;
+  top: 25%;
+  left: 82%;
+  width: 18%;
+  height: 50%;
+  margin-left: +100%;
+  border-style: solid;
+  border-right: 0px;
+  border-width: 4px;
+  border-radius: 3px;
+  border-color: #ff00e4;
+}
 
 .collapse, .well {
   background-color: black;
-  border-color:#ff00e4;
+  border-color: #ff00e4;
 }
-
 hr {
-  border-color:#ff00e4;
+  border-color: #ff00e4;
 }
-
 .rideHeadline {
   font-family: 'rock salt', cursive;
   letter-spacing: 4px;
   line-height: 150%;
-  font-size:2.5em;
+  font-size: 2.5em;
 }
-
 .rideLocation {
-  font-style:italic;
-  display:inline;
+  font-style: italic;
+  display: inline;
 }
 .collapseButton {
   background-color: #6fff00;
   border-color: black;
   color: black;
 }
-
 .deleteBtn {
-  background-color:#f7f909;
-  color:black;
-  border-color:black;
+  background-color: #f7f909;
+  color: black;
+  border-color: black;
 }
-
 html, body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
   background-color: black;
-  color:white;
+  color: white;
   margin: 0;
   padding: 0;
 }
-
 h1 {
   margin-top: 100px;
   text-align: center;
@@ -135,63 +112,46 @@ p {
   font-size: 1.2em;
   color: white;
 }
-
-.postedOn{
-  font-style:italic;
-  text-align:right;
+.postedOn {
+  font-style: italic;
+  text-align: right;
 }
-
 .pullQuote {
-  font-style:italic;
-  font-size:2.0em;
+  font-style: italic;
+  font-size: 2.0em;
 }
-
 .headerText {
-  margin-top:0;
+  margin-top: 0;
   color: #ff00e4;
   margin-top: 0;
-  margin-left:0;
+  margin-left: 0;
   padding: 0;
-  left:0;
-  font-size:7vh;
+  left: 0;
+  font-size: 7vh;
   text-align: right;
   vertical-align: middle;
 }
-
 .topHeader {
   margin: 0;
-  padding:0;
-  height:30vh;
-  width:100%;
+  padding: 0;
+  height: 30vh;
+  width: 100%;
   border-bottom: 3px solid #ff00e4s;
 }
-
 #bgImage {
-  height:100%;
+  height: 100%;
   width: 100%;
 }
-
-.topHeaderBgContainer{
-height:30vh;
+.topHeaderBgContainer {
+  height: 30vh;
 }
-
 .topHeaderTextContainer {
-  display:block;
-  vertical-align:middle;
-  /*font-family: 'Rock Salt', cursive;*/
+  display: block;
+  vertical-align: middle;
   font-family: 'Permanent Marker', cursive;
 }
-
-
-
 .container {
-    display: inline-block;
-    vertical-align: middle;
-    color: #ff00e4;
+  display: inline-block;
+  vertical-align: middle;
+  color: #ff00e4;
 }
-
-
-/*textarea {
-  data-role: none;
-  resize: none;
-}*/
