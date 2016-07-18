@@ -21,7 +21,8 @@ app.use(function(req, res, next) {
 
 var today= +moment();
 var daysOld=(Math.floor((today-502358400000)/ 86400000)+" days");
-
+var currentHour= moment().hour();
+var isAwake= 8<currentHour && currentHour < 22;
 db = require('./models');
 
 //load public folder
@@ -58,9 +59,10 @@ app.get('/api', function api_index(req, res) {
 //GET profile information
 app.get('/api/profile',function api_profile(req, res) {
   res.json({
-  full_name: 'William "Bill" Joseph Himmelsbach',
+  full_name: "Bill Joseph Himmelsbach",
   current_city: "Oakland, California",
   days_old: daysOld,
+  is_awake: isAwake,
   github_link: "https://github.com/billhimmelsbach",
   github_profile_image: "https://avatars.githubusercontent.com/billhimmelsbach",
   bicycle: "Surly Long Haul Disc Trucker",
@@ -76,7 +78,13 @@ app.get('/api/rides', function (req, res) {
     if (err) {
       res.send(404);
     }
+    var limit = Math.floor(req.query.limit);
+    console.log(limit);
     res.json(rides);
+    if ((limit!==undefined) && (limit >=1)) {
+
+      console.log("wow!");
+    }
   });
 });
 
@@ -89,6 +97,25 @@ app.get('/api/rides/:id', function (req, res) {
     res.json(ride);
   });
 });
+// app.get("/api/rides", function (req, res) {
+//   db.Ride.find({}, function(err, rides) {
+//   var limit = req.query.limit;
+//   if (err) {
+//     res.sendStatus(404);
+//   }
+//   console.log(rides[0]);
+//   var limitedJson=[];
+// });
+// });
+// app.get("/api/rides", function (req, res) {
+//   var limit = req.query.limit;
+//   console.log(limit);
+//   var limitedJson=[];
+//   for (var i = 0; i < limit; i++) {
+//     limitedJson.push(db.Ride[i]);
+//   }
+//   res.json(limitedJson);
+// });
 
 // POST one new ride based on form data in body
 app.post('/api/rides', function (req, res) {
