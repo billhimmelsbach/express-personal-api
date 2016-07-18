@@ -5,6 +5,7 @@ html, body {
 }
 #map {
   height: 100%;
+  width: 100%;
 }
 #floating-panel {
   position: absolute;
@@ -18,6 +19,14 @@ html, body {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
+}
+.floatMap {
+  z-index:1000000;
+  position: fixed;
+  top:25%;
+  left:82%;
+  width:18%;
+  height:50%;
 }
 
 /*.red {
