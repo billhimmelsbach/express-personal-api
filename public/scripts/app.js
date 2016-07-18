@@ -108,14 +108,13 @@ setTimeout(function() {
   $('.submit').on('click', function() {
 address=$(this).attr('id');
 if (mapHidden === 1) {
-$('.floatMap').css('margin-left', '0%');
+$('.floatMap').animate({marginLeft: '0%'}, 350);
 $('.floatMap').css('position', 'fixed');
 $('.submit').val('Hide it!');
 mapHidden--;
 }
 else {
-  $('.floatMap').css('margin-left', '+100%');
-  $('.floatMap').css('position', 'absolute');
+  $('.floatMap').animate({marginLeft: '+100%'}, 350);
   $('.submit').val('Map it!');
   mapHidden++;
 }
