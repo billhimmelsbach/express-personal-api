@@ -1,5 +1,6 @@
 console.log("Sanity Check: JS is working!");
 //google API test
+
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
