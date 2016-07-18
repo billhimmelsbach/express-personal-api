@@ -50,6 +50,7 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/rides", description: "Show all bike rides"},
       {method: "GET", path: "/api/rides/:id", description: "Show bike ride by ID"},
       {method: "GET", path: "/api/rides/?limit=2", description: "Limit result to 2 bike rides (or replace 2 with another number)"},
+      {method: "GET", path: "/api/rides/?date=2014-07-28", description: "Limit result to bikes rides that took place on 2014-07-28 (or replace with any date in YYYY-MM-DD format)"},
       {method: "POST", path: "/api/rides", description: "Create new bike ride using parameters from the form in the body"},
       {method: "PUT", path: "/api/rides", description: "Update bike ride using parameters from the form in the body"},
       {method: "DELETE", path: "/api/rides/:id", description: "Delete a bike ride by ID"},
@@ -98,7 +99,7 @@ app.get('/api/rides', function (req, res) {
           res.send(404);
           return;
         }
-        if (locatedQuery[0].title === undefined) {
+        if (locatedQuery[0].rideTime === undefined) {
           console.log(locatedQuery);
           console.log(locatedQuery[0].title);
           res.send(404);
