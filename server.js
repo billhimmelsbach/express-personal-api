@@ -24,7 +24,8 @@ app.use(function(req, res, next) {
 var today = +moment();
 var daysOld = (Math.floor((today - 502358400000) / 86400000) + " days");
 var currentHour = moment().hour();
-var isAwake = 8 < currentHour && currentHour < 22;
+console.log(currentHour);
+var isAwake = 8 <= currentHour && currentHour < 22;
 db = require('./models');
 
 //load public folder
