@@ -49,6 +49,7 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/profile", description: "Data about me"},
       {method: "GET", path: "/api/rides", description: "Show all bike rides"},
       {method: "GET", path: "/api/rides/:id", description: "Show bike ride by ID"},
+      {method: "GET", path: "/api/rides/?limit=2", description: "Limit result to 2 bike rides (or replace 2 with another number)"},
       {method: "POST", path: "/api/rides", description: "Create new bike ride using parameters from the form in the body"},
       {method: "PUT", path: "/api/rides", description: "Update bike ride using parameters from the form in the body"},
       {method: "DELETE", path: "/api/rides/:id", description: "Delete a bike ride by ID"},
@@ -79,10 +80,7 @@ app.get('/api/rides', function (req, res) {
       res.send(404);
     }
     var limit = Math.floor(req.query.limit);
-    console.log(limit);
     if ((limit!==undefined) && (limit >=1)) {
-      console.log("wow!");
-      console.log(rides[0]);
       var limitedJson=[];
       for (var i = 0; i < limit; i++) {
         limitedJson.push(rides[i]);
