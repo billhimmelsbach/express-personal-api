@@ -113,7 +113,9 @@ $(document).ready(function(){
   var geocoder = new google.maps.Geocoder();
 
 setTimeout(function() {
-  $('#submit').on('click', function() {
+  $('.submit').on('click', function() {
+address=$(this).attr('id');
+console.log(address);
     console.log("test!");
     geocodeAddress(geocoder, map);
   });
@@ -121,7 +123,8 @@ setTimeout(function() {
 }
 
 function geocodeAddress(geocoder, resultsMap) {
-  var address = document.getElementById('address').value;
+  console.log(address);
+  // var address = document.getElementById('address').value;
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       resultsMap.setCenter(results[0].geometry.location);

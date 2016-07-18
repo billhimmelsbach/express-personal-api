@@ -4,6 +4,14 @@ html, body {
   padding: 0;
   background-color: black;
 }
+
+#submit{
+  display:inline;
+  background-color: #00b5fb;
+  color:black;
+}
+
+
 #map {
   height: 100%;
   width: 100%;
@@ -71,6 +79,7 @@ hr {
 
 .tripLocation {
   font-style:italic;
+  display:inline;
 }
 .collapseButton {
   background-color: #6fff00;

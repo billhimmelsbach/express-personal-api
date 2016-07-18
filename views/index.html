@@ -90,10 +90,9 @@
             {{#each trips}}
               <h2 class="tripHeadline">{{title}}</h2>
               <h3 class="tripLocation">{{location}} - {{tripTime}}</h3>
-              <div id="floating-panel">
-  <input id="address" type="textbox" value="{{location}}">
-  <input id="submit" type="button" value="Geocode">
-</div>
+  <input class="address" type="textbox" value="{{location}}" hidden>
+  <input id="{{location}}" class="submit" type="button" value="Geocode">
+  <br>
               <br>
               <div>
                 <img class= "img-rounded img-responsive center-block" src="{{image}}">
