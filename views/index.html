@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Rock+Salt" rel="stylesheet">
 
   <!-- VENDOR SCRIPTS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
@@ -90,8 +90,9 @@
             {{#each trips}}
               <h2 class="tripHeadline">{{title}}</h2>
               <h3 class="tripLocation">{{location}} - {{tripTime}}</h3>  <div id="floating-panel">
-                <input id="address" type="textbox" value="{{location}}">
-                <input id="submit" type="button" value="Geocode">
+                <div class="form-group">
+                <button class="address" type="textbox" value="{{location}}">
+              </div>
               </div>
               <br>
               <div>

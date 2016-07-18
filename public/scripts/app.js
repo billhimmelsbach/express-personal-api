@@ -7,14 +7,8 @@ function initMap() {
     center: {lat: -34.397, lng: 150.644}
   });
   var geocoder = new google.maps.Geocoder();
-
-  document.getElementById('submit').addEventListener('click', function() {
-    geocodeAddress(geocoder, map);
-  });
 }
-
 function geocodeAddress(geocoder, resultsMap) {
-  var address = document.getElementById('address').value;
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       resultsMap.setCenter(results[0].geometry.location);
@@ -31,6 +25,13 @@ var template;
 var $tripsList;
 var allTrips = [];
 $(document).ready(function(){
+  $('.btn-primary').on('click', function(event) {
+      console.log("clicked!");
+      address=$(this).val();
+      geocodeAddress(geocoder, map);
+      console.log("clicked!");
+    });
+
 
     $tripsList = $('#tripTarget');
 
@@ -121,3 +122,10 @@ $(document).ready(function(){
   function deleteTripError() {
     $('#tripTarget').text('Failed to load trips, is the server up?');
   }
+
+  $('button').on('click', function(event) {
+      console.log("clicked!");
+      address=$(this).val();
+      geocodeAddress(geocoder, map);
+      console.log("clicked!");
+    });
