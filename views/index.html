@@ -89,11 +89,11 @@
           <script id="trips-template" type="text/x-handlebars-template">
             {{#each trips}}
               <h2 class="tripHeadline">{{title}}</h2>
-              <h3 class="tripLocation">{{location}} - {{tripTime}}</h3>  <div id="floating-panel">
-                <div class="form-group">
-                <button class="address" type="textbox" value="{{location}}">
-              </div>
-              </div>
+              <h3 class="tripLocation">{{location}} - {{tripTime}}</h3>
+              <div id="floating-panel">
+  <input id="address" type="textbox" value="{{location}}">
+  <input id="submit" type="button" value="Geocode">
+</div>
               <br>
               <div>
                 <img class= "img-rounded img-responsive center-block" src="{{image}}">

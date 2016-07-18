@@ -1,36 +1,18 @@
 console.log("Sanity Check: JS is working!");
 //google API test
 
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
-    center: {lat: -34.397, lng: 150.644}
-  });
-  var geocoder = new google.maps.Geocoder();
-}
-function geocodeAddress(geocoder, resultsMap) {
-  geocoder.geocode({'address': address}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      resultsMap.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
+
+
 var template;
 var $tripsList;
 var allTrips = [];
 $(document).ready(function(){
-  $('.btn-primary').on('click', function(event) {
-      console.log("clicked!");
-      address=$(this).val();
-      geocodeAddress(geocoder, map);
-      console.log("clicked!");
-    });
+  // $('.btn-primary').on('click', function(event) {
+  //     console.log("clicked!");
+  //     address=$(this).val();
+  //     geocodeAddress(geocoder, map);
+  //     console.log("clicked!");
+  //   });
 
 
     $tripsList = $('#tripTarget');
@@ -123,9 +105,65 @@ $(document).ready(function(){
     $('#tripTarget').text('Failed to load trips, is the server up?');
   }
 
-  $('button').on('click', function(event) {
-      console.log("clicked!");
-      address=$(this).val();
-      geocodeAddress(geocoder, map);
-      console.log("clicked!");
-    });
+  function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: {lat: -34.397, lng: 150.644}
+  });
+  var geocoder = new google.maps.Geocoder();
+
+setTimeout(function() {
+  $('#submit').on('click', function() {
+    console.log("test!");
+    geocodeAddress(geocoder, map);
+  });
+  }, 3000);
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+  var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+  //
+  // setTimeout(function() {
+  //    initMap(function() {
+  //     console.log("test");
+  //       var map = new google.maps.Map(document.getElementById('map'), {
+  //       zoom: 8,
+  //       center: {lat: -34.397, lng: 150.644}
+  //     });
+  //   });
+  //   $('.address').on('click', function() {
+  //     address= $(this).val();
+  //     geocoder = new google.maps.Geocoder();
+  //     geocodeAddress(geocoder, map);
+  //     console.log(address);
+  //     console.log("test again!");
+  //   });
+  //   }, 3000);
+  //
+  //
+  //
+  //   function geocodeAddress(geocoder, resultsMap) {
+  //     geocoder.geocode({'address': address}, function(results, status) {
+  //       if (status === google.maps.GeocoderStatus.OK) {
+  //         resultsMap.setCenter(results[0].geometry.location);
+  //         var marker = new google.maps.Marker({
+  //           map: resultsMap,
+  //           position: results[0].geometry.location
+  //         });
+  //       } else {
+  //         alert('Geocode was not successful for the following reason: ' + status);
+  //       }
+  //     });
+  //   }
