@@ -121,7 +121,7 @@ else {
 $('.floatMap').blur();
     geocodeAddress(geocoder, map);
   });
-  }, 3000);
+}, 1000);
 }
 
 function geocodeAddress(geocoder, resultsMap) {
