@@ -1,22 +1,14 @@
 console.log("Sanity Check: JS is working!");
 //google API test
 
-var mapHidden=1;
 var address;
 var template;
 var $tripsList;
+var mapHidden=1;
 var allTrips = [];
 $(document).ready(function(){
-  // $('.btn-primary').on('click', function(event) {
-  //     console.log("clicked!");
-  //     address=$(this).val();
-  //     geocodeAddress(geocoder, map);
-  //     console.log("clicked!");
-  //   });
-
 
     $tripsList = $('#tripTarget');
-
     // creates a helper function for handlebars that replaces \n pulled from the database with <br> tags
     Handlebars.registerHelper('breaklines', function(text) {
       text = Handlebars.Utils.escapeExpression(text);
@@ -127,6 +119,7 @@ else {
   $('.submit').val('Map it!');
   mapHidden++;
 }
+$('.floatMap').blur();
 console.log(address);
     console.log("test!");
     geocodeAddress(geocoder, map);
@@ -145,40 +138,7 @@ function geocodeAddress(geocoder, resultsMap) {
         position: results[0].geometry.location
       });
     } else {
-      alert('Geocode was not successful for the following reason: ' + status);
+      // alert('Geocode was not successful for the following reason: ' + status);
     }
   });
 }
-  //
-  // setTimeout(function() {
-  //    initMap(function() {
-  //     console.log("test");
-  //       var map = new google.maps.Map(document.getElementById('map'), {
-  //       zoom: 8,
-  //       center: {lat: -34.397, lng: 150.644}
-  //     });
-  //   });
-  //   $('.address').on('click', function() {
-  //     address= $(this).val();
-  //     geocoder = new google.maps.Geocoder();
-  //     geocodeAddress(geocoder, map);
-  //     console.log(address);
-  //     console.log("test again!");
-  //   });
-  //   }, 3000);
-  //
-  //
-  //
-  //   function geocodeAddress(geocoder, resultsMap) {
-  //     geocoder.geocode({'address': address}, function(results, status) {
-  //       if (status === google.maps.GeocoderStatus.OK) {
-  //         resultsMap.setCenter(results[0].geometry.location);
-  //         var marker = new google.maps.Marker({
-  //           map: resultsMap,
-  //           position: results[0].geometry.location
-  //         });
-  //       } else {
-  //         alert('Geocode was not successful for the following reason: ' + status);
-  //       }
-  //     });
-  //   }
