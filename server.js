@@ -2,6 +2,10 @@
 var express = require('express'),
     app = express();
 
+var moment = require('moment');
+
+moment().format();
+
 // parse incoming data from body object and populate req.body
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,7 +19,9 @@ app.use(function(req, res, next) {
   next();
 });
 
-//loads models
+var today= +moment();
+var daysOld=(Math.floor((today-502358400000)/ 86400000)+" days");
+
 db = require('./models');
 
 //load public folder
@@ -54,6 +60,7 @@ app.get('/api/profile',function api_profile(req, res) {
   res.json({
   full_name: 'William "Bill" Joseph Himmelsbach',
   current_city: "Oakland, California",
+  days_old: daysOld,
   github_link: "https://github.com/billhimmelsbach",
   github_profile_image: "https://avatars.githubusercontent.com/billhimmelsbach",
   bicycle: "Surly Long Haul Disc Trucker",
