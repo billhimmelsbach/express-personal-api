@@ -1,8 +1,8 @@
 console.log("Sanity Check: JS is working!");
 //google API test
 
-
-
+var mapHidden=1;
+var address;
 var template;
 var $tripsList;
 var allTrips = [];
@@ -115,8 +115,16 @@ $(document).ready(function(){
 setTimeout(function() {
   $('.submit').on('click', function() {
 address=$(this).attr('id');
+if (mapHidden === 1) {
 $('.floatMap').css('margin-left', '0%');
 $('.floatMap').css('position', 'fixed');
+mapHidden--;
+}
+else {
+  $('.floatMap').css('margin-left', '+100%');
+  $('.floatMap').css('position', 'absolute');
+  mapHidden++;
+}
 console.log(address);
     console.log("test!");
     geocodeAddress(geocoder, map);

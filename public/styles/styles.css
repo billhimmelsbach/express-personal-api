@@ -25,6 +25,10 @@ html, body {
   color: #00b5fb;
 }
 
+.mapItBtn:active {
+  color: #00b5fb
+}
+
 
 #map {
   height: 100%;
