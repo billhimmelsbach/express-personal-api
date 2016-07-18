@@ -80,11 +80,17 @@ app.get('/api/rides', function (req, res) {
     }
     var limit = Math.floor(req.query.limit);
     console.log(limit);
-    res.json(rides);
     if ((limit!==undefined) && (limit >=1)) {
-
       console.log("wow!");
+      console.log(rides[0]);
+      var limitedJson=[];
+      for (var i = 0; i < limit; i++) {
+        limitedJson.push(rides[i]);
+      }
+      res.json(limitedJson);
+      return;
     }
+    res.json(rides);
   });
 });
 
