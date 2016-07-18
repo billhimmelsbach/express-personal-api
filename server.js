@@ -78,8 +78,12 @@ app.get('/api/rides', function (req, res) {
   db.Ride.find({}, function(err, rides) {
     if (err) {
       res.send(404);
+      return;
     }
     var limit = Math.floor(req.query.limit);
+    var dateQuery = (req.query.date);
+    console.log(dateQuery);
+    console.log(limit);
     if ((limit!==undefined) && (limit >=1)) {
       var limitedJson=[];
       for (var i = 0; i < limit; i++) {
@@ -88,6 +92,25 @@ app.get('/api/rides', function (req, res) {
       res.json(limitedJson);
       return;
     }
+    if (dateQuery !== undefined) {
+      db.Ride.find({rideTime: dateQuery}, function (err, locatedQuery) {
+        if (err) {
+          res.send(404);
+          return;
+        }
+        if (locatedQuery[0].title === undefined) {
+          console.log(locatedQuery);
+          console.log(locatedQuery[0].title);
+          res.send(404);
+          return;
+        }
+        console.log(locatedQuery);
+        res.json(locatedQuery);
+          return;
+      });
+      return;
+    }
+
     res.json(rides);
   });
 });
@@ -101,25 +124,6 @@ app.get('/api/rides/:id', function (req, res) {
     res.json(ride);
   });
 });
-// app.get("/api/rides", function (req, res) {
-//   db.Ride.find({}, function(err, rides) {
-//   var limit = req.query.limit;
-//   if (err) {
-//     res.sendStatus(404);
-//   }
-//   console.log(rides[0]);
-//   var limitedJson=[];
-// });
-// });
-// app.get("/api/rides", function (req, res) {
-//   var limit = req.query.limit;
-//   console.log(limit);
-//   var limitedJson=[];
-//   for (var i = 0; i < limit; i++) {
-//     limitedJson.push(db.Ride[i]);
-//   }
-//   res.json(limitedJson);
-// });
 
 // POST one new ride based on form data in body
 app.post('/api/rides', function (req, res) {
