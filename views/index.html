@@ -56,7 +56,7 @@
       </div>
         <div class= "collapse" id="collapseForm">
         <div class="well">
-        <form class="form" id="newTripForm">
+        <form class="form" id="newRideForm">
           <div class="form-group">
             <label for="title">name your ride!</label>
             <input type="text" class="form-control" name="title" placeholder="On The Kindness of Old Man Mobs" required>
@@ -66,8 +66,8 @@
             <input type="text" class="form-control" name="location" placeholder="Osaka, Japan" required>
           </div>
           <div class="form-group">
-            <label for="tripTime">when did you ride?
-            <input type="date" class="form-control" name="tripTime" required>
+            <label for="rideTime">when did you ride?
+            <input type="date" class="form-control" name="rideTime" required>
           </div>
           <div class="form-group">
             <label for="image">link to a picture of your ride! (.png, .jpg, .gif)</label>
@@ -87,12 +87,12 @@
       </div>
     </div>
     <hr>
-        <div id='tripTarget'>
+        <div id='rideTarget'>
           <!-- handlebars template -->
-          <script id="trips-template" type="text/x-handlebars-template">
-            {{#each trips}}
-              <h2 class="tripHeadline">{{title}}</h2>
-              <h3 class="tripLocation">{{location}} - {{tripTime}}</h3>
+          <script id="rides-template" type="text/x-handlebars-template">
+            {{#each rides}}
+              <h2 class="rideHeadline">{{title}}</h2>
+              <h3 class="rideLocation">{{location}} - {{rideTime}}</h3>
   <input class="address" type="textbox" value="{{location}}" hidden>
   <input id="{{location}}" class="submit mapItBtn" type="button" value="Map it!">
   <br>

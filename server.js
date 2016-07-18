@@ -40,11 +40,11 @@ app.get('/api', function api_index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"},
-      {method: "GET", path: "/api/trips", description: "Show all bike trips"},
-      {method: "GET", path: "/api/trips/:id", description: "Show bike trip by ID"},
-      {method: "POST", path: "/api/trips", description: "Create new bike trip using parameters from the form in the body"},
-      {method: "PUT", path: "/api/trips", description: "Update bike trip using parameters from the form in the body"},
-      {method: "DELETE", path: "/api/trips/:id", description: "Delete a bike trip by ID"},
+      {method: "GET", path: "/api/rides", description: "Show all bike rides"},
+      {method: "GET", path: "/api/rides/:id", description: "Show bike ride by ID"},
+      {method: "POST", path: "/api/rides", description: "Create new bike ride using parameters from the form in the body"},
+      {method: "PUT", path: "/api/rides", description: "Update bike ride using parameters from the form in the body"},
+      {method: "DELETE", path: "/api/rides/:id", description: "Delete a bike ride by ID"},
     ]
   });
 });
@@ -63,49 +63,49 @@ app.get('/api/profile',function api_profile(req, res) {
   });
 });
 
-// GET index of all trips
-app.get('/api/trips', function (req, res) {
-  db.Trip.find({}, function(err, trips) {
+// GET index of all rides
+app.get('/api/rides', function (req, res) {
+  db.Ride.find({}, function(err, rides) {
     if (err) {
       res.send(404);
     }
-    res.json(trips);
+    res.json(rides);
   });
 });
 
-//shows one trip by ID
-app.get('/api/trips/:id', function (req, res) {
-  db.Trip.findById(req.params.id, function(err, trip) {
+//shows one ride by ID
+app.get('/api/rides/:id', function (req, res) {
+  db.Ride.findById(req.params.id, function(err, ride) {
     if (err) {
       res.sendStatus(404);
     }
-    res.json(trip);
+    res.json(ride);
   });
 });
 
-// POST one new trip based on form data in body
-app.post('/api/trips', function (req, res) {
-  var newTrip = new db.Trip({
+// POST one new ride based on form data in body
+app.post('/api/rides', function (req, res) {
+  var newRide = new db.Ride({
     title: req.body.title,
     image: req.body.image,
     location: req.body.location,
     pullQuote: req.body.pullQuote,
     summary: req.body.summary,
-    tripTime: req.body.tripTime,
+    rideTime: req.body.rideTime,
     postTime: new Date(),
   });
-     newTrip.save(function(err, savedTrip){
+     newRide.save(function(err, savedRide){
        if (err) {
          res.sendStatus(404);
        }
-       res.json(savedTrip);
+       res.json(savedRide);
      });
    });
 
-// DELETE trip based on ID parameter
-app.delete('/api/trips/:id', function (req, res) {
-  var tripId = req.params.id;
-  db.Trip.findOneAndRemove({ _id: tripId },function (err, deletedEntry){
+// DELETE ride based on ID parameter
+app.delete('/api/rides/:id', function (req, res) {
+  var rideId = req.params.id;
+  db.Ride.findOneAndRemove({ _id: rideId },function (err, deletedEntry){
     if (err) {
       res.sendStatus(404);
     }
@@ -113,23 +113,23 @@ app.delete('/api/trips/:id', function (req, res) {
   });
 });
 
-// PUT trip based on ID parameter
-app.put('/api/trips/:id/', function(req,res) {
-  db.Trip.findById(req.params.id, function(err, tripToBeChanged){
+// PUT ride based on ID parameter
+app.put('/api/rides/:id/', function(req,res) {
+  db.Ride.findById(req.params.id, function(err, rideToBeChanged){
       if (err) {
         res.sendStatus(404);
       }
-      tripToBeChanged.title = req.body.title;
-      tripToBeChanged.image = req.body.image;
-      tripToBeChanged.location = req.body.location;
-      tripToBeChanged.pullQuote = req.body.pullQuote;
-      tripToBeChanged.summary = req.body.summary;
-      tripToBeChanged.tripTime = req.body.tripTime;
-      tripToBeChanged.save(function(err, updateTrip){
+      rideToBeChanged.title = req.body.title;
+      rideToBeChanged.image = req.body.image;
+      rideToBeChanged.location = req.body.location;
+      rideToBeChanged.pullQuote = req.body.pullQuote;
+      rideToBeChanged.summary = req.body.summary;
+      rideToBeChanged.rideTime = req.body.rideTime;
+      rideToBeChanged.save(function(err, updateRide){
         if (err) {
           res.sendStatus(404);
         }
-        res.json(updateTrip);
+        res.json(updateRide);
     });
   });
 });

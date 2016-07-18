@@ -3,12 +3,12 @@ console.log("Sanity Check: JS is working!");
 
 var address;
 var template;
-var $tripsList;
+var $ridesList;
 var mapHidden=1;
-var allTrips = [];
+var allRides = [];
 $(document).ready(function(){
 
-    $tripsList = $('#tripTarget');
+    $ridesList = $('#rideTarget');
     // creates a helper function for handlebars that replaces \n pulled from the database with <br> tags
     Handlebars.registerHelper('breaklines', function(text) {
       text = Handlebars.Utils.escapeExpression(text);
@@ -17,84 +17,84 @@ $(document).ready(function(){
     });
 
     //compiles handlebars template
-    var source = $('#trips-template').html();
+    var source = $('#rides-template').html();
     template = Handlebars.compile(source);
 
-//pulls a JSON of the trip data
+//pulls a JSON of the ride data
     $.ajax({
       method: 'GET',
-      url: '/api/trips',
+      url: '/api/rides',
       success: handleSuccess,
       error: handleError
     });
 
-//on click of the new trip button, POSTSs new trip based on forms
-    $('#newTripForm').on('submit', function(event) {
+//on click of the new ride button, POSTSs new ride based on forms
+    $('#newRideForm').on('submit', function(event) {
       event.preventDefault();
       $.ajax({
         method: 'POST',
-        url: '/api/trips',
+        url: '/api/rides',
         data: $(this).serialize(),
-        success: newTripSuccess,
-        error: newTripError
+        success: newRideSuccess,
+        error: newRideError
       });
     });
 
-//on click of the delete this trip button, DELETE trip based on ID
-    $tripsList.on('click', '.deleteBtn', function() {
+//on click of the delete this ride button, DELETE ride based on ID
+    $ridesList.on('click', '.deleteBtn', function() {
       $.ajax({
         method: 'DELETE',
-        url: '/api/trips/'+$(this).attr('data-id'),
-        success: deleteTripSuccess,
-        error: deleteTripError
+        url: '/api/rides/'+$(this).attr('data-id'),
+        success: deleteRideSuccess,
+        error: deleteRideError
       });
     });
 
   });
 
-  //function that renders data on AJAX success: removes all posts, passes allTrips to template, appends HTML
+  //function that renders data on AJAX success: removes all posts, passes allRides to template, appends HTML
   function render () {
-    $tripsList.empty();
-    var tripsHtml = template({ trips: allTrips });
-    $tripsList.append(tripsHtml);
+    $ridesList.empty();
+    var ridesHtml = template({ rides: allRides });
+    $ridesList.append(ridesHtml);
   }
 
   function handleSuccess(json) {
-    allTrips = json;
+    allRides = json;
     render();
   }
 
   function handleError(event) {
     console.log('uh oh');
-    $('#tripTarget').text('Failed to load trips, is the server up?');
+    $('#rideTarget').text('Failed to load rides, is the server up?');
   }
 
-  function newTripSuccess(json) {
-    $('#newTripForm input').val('');
-    allTrips.push(json);
+  function newRideSuccess(json) {
+    $('#newRideForm input').val('');
+    allRides.push(json);
     render();
     $('textarea').val('');
   }
 
-  function newTripError() {
-    $('#tripTarget').text('Failed to load trips, is the server up?');
+  function newRideError() {
+    $('#rideTarget').text('Failed to load rides, is the server up?');
   }
 
-  // find the trip by ID, remove from allTrips array
-  function deleteTripSuccess(json) {
-    var trip = json;
-    var tripId = trip._id;
-    for(var index = 0; index < allTrips.length; index++) {
-      if(allTrips[index]._id === tripId) {
-        allTrips.splice(index, 1);
+  // find the ride by ID, remove from allRides array
+  function deleteRideSuccess(json) {
+    var ride = json;
+    var rideId = ride._id;
+    for(var index = 0; index < allRides.length; index++) {
+      if(allRides[index]._id === rideId) {
+        allRides.splice(index, 1);
         break;
       }
     }
     render();
   }
 
-  function deleteTripError() {
-    $('#tripTarget').text('Failed to load trips, is the server up?');
+  function deleteRideError() {
+    $('#rideTarget').text('Failed to load rides, is the server up?');
   }
 
   function initMap() {
