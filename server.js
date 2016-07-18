@@ -83,8 +83,6 @@ app.get('/api/rides', function (req, res) {
     }
     var limit = Math.floor(req.query.limit);
     var dateQuery = (req.query.date);
-    console.log(dateQuery);
-    console.log(limit);
     if ((limit!==undefined) && (limit >=1)) {
       var limitedJson=[];
       for (var i = 0; i < limit; i++) {

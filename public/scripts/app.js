@@ -1,5 +1,6 @@
-console.log("Sanity Check: JS is working!");
-//google API test
+//JavaScript check
+// console.log("Sanity Check: JS is working!");
+
 
 var address;
 var template;
@@ -65,7 +66,6 @@ $(document).ready(function(){
   }
 
   function handleError(event) {
-    console.log('uh oh');
     $('#rideTarget').text('Failed to load rides, is the server up?');
   }
 
@@ -119,15 +119,12 @@ else {
   mapHidden++;
 }
 $('.floatMap').blur();
-console.log(address);
-    console.log("test!");
     geocodeAddress(geocoder, map);
   });
   }, 3000);
 }
 
 function geocodeAddress(geocoder, resultsMap) {
-  console.log(address);
   // var address = document.getElementById('address').value;
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
